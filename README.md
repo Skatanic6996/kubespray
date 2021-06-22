@@ -82,7 +82,9 @@ To allow HAProxy to bind to the shared IP address, we add the following line to 
 vi /etc/sysctl.conf
 
 [...]
+
 net.ipv4.ip_nonlocal_bind=1
+
 ... 
 
 and run:
@@ -130,14 +132,14 @@ lb1:
 
 ip addr sh eth0
 
-lb1:~# ip addr sh eth0
+lb1: ip addr sh eth0
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
     link/ether 00:0c:29:63:f7:5c brd ff:ff:ff:ff:ff:ff
     inet 192.168.0.100/24 brd 192.168.0.255 scope global eth0
     inet 192.168.0.99/32 scope global eth0
     inet6 fe80::20c:29ff:fe63:f75c/64 scope link
        valid_lft forever preferred_lft forever
-lb1:~#
+lb1:
 
 Now we do almost the same on lb2. There's one small, but important difference - we use priority 100 instead of priority 101 in /etc/keepalived/keepalived.conf which makes lb2 the passive (slave or hot-standby) load balancer.
 
