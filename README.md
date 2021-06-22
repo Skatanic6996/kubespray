@@ -79,7 +79,7 @@ aptitude install keepalived
 
 To allow HAProxy to bind to the shared IP address, we add the following line to /etc/sysctl.conf:
 
-vi /etc/sysctl.conf
+nano /etc/sysctl.conf
 
 [...]
 
@@ -95,7 +95,7 @@ Next we must configure keepalived (this is done through the configuration file /
 
 lb1:
 
-vi /etc/keepalived/keepalived.conf
+nano /etc/keepalived/keepalived.conf
 
 ``` js
 vrrp_script chk_haproxy {           # Requires keepalived-1.1.13
